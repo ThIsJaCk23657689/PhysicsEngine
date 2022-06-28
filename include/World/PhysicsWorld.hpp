@@ -11,7 +11,9 @@ public:
 
     void AddEntity(Entity* entity);
     void RemoveEntity(Entity* entity);
+    void ClearEntity();
     void Step(const float& dt);
+    void ResolveCollision(const float& dt);
 
 private:
     std::vector<Entity*> m_entities;

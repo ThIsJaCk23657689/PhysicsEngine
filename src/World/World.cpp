@@ -46,6 +46,23 @@ void World::Create() {
         auto temp = Entity(glm::vec3(x, 0.0f, z), {0, 0, 0}, glm::vec3(1.5f), &TextureManager::GetTexture2D("Awesome Face"));
         awesome_faces.emplace_back(temp);
     }
+    for (int i = 0; i < 100; i++) {
+        float x = random_num(rand_generator) * 100.0f - 50.0f;
+        float y = random_num(rand_generator) * 50.0f;
+        float z = random_num(rand_generator) * 100.0f - 50.0f;
+
+        float fx = random_num(rand_generator) * 10.0f - 5.0f;
+        float fy = random_num(rand_generator) * 10.0f + 10.0f;
+        float fz = random_num(rand_generator) * 10.0f - 5.0f;
+
+        float m = random_num(rand_generator) + 1.0f;
+
+        auto temp = Entity(glm::vec3(x, y, z), glm::vec3(0.0f), glm::vec3(m), (glm::normalize(glm::vec3(x, y, z)) + 1.0f) / 2.0f);
+        temp.force = glm::vec3(fx, fy, fz);
+        temp.mass = m;
+
+        my_balls.emplace_back(temp);
+    }
 
     // Player Initialize
     me = std::make_unique<Player>(&camera);

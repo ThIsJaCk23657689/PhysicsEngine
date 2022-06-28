@@ -25,6 +25,9 @@ Game::Game() {
         gaussian_blur_framebuffer[i]->BindTexture2D(TextureManager::GetTexture2D("GaussianBlur" + std::to_string(i)), 0);
         gaussian_blur_framebuffer[i]->CheckComplete();
     }
+
+    // Create Physics World
+    physics_world = std::make_unique<PhysicsWorld>();
 }
 
 void Game::RendererInit() {
@@ -64,18 +67,25 @@ void Game::Update(float dt) {
     state.world->ortho_y_camera->UpdateTargetPosition(state.world->my_camera->position);
     state.world->ortho_z_camera->UpdateTargetPosition(state.world->my_camera->position);
 
-    state.world->billboard->UpdateBillboard(state.world->my_camera);
+    // state.world->billboard->UpdateBillboard(state.world->my_camera);
     state.world->view_volume->UpdateViewVolume(state.world->my_camera);
 
     // Update the spotlight
     state.world->my_spotlight->Update(dt);
 
-    state.world->earth.UpdateRotation(glm::vec3(0.0f, 10.0f, 0.0f), dt);
-    state.world->moon.UpdateRotation(glm::vec3(0.0f, 5.0f, 0.0f), dt);
-
-    for (auto& rick : state.world->rick_rolls) {
-        rick.UpdateRotation(glm::vec3(0.0f, 80.0f, 10.0f), dt);
+    // Do Physics !!
+    for (auto& ball : state.world->my_balls) {
+        physics_world->AddEntity(&ball);
     }
+    physics_world->Step(dt);
+    physics_world->ClearEntity();
+
+    // state.world->earth.UpdateRotation(glm::vec3(0.0f, 10.0f, 0.0f), dt);
+    // state.world->moon.UpdateRotation(glm::vec3(0.0f, 5.0f, 0.0f), dt);
+
+//    for (auto& rick : state.world->rick_rolls) {
+//        rick.UpdateRotation(glm::vec3(0.0f, 80.0f, 10.0f), dt);
+//    }
 }
 
 void Game::Render(const std::unique_ptr<Camera>& current_camera, float dt) {

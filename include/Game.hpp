@@ -14,6 +14,7 @@
 #include "GL/FrameBuffer.hpp"
 #include "GL/RenderBuffer.hpp"
 
+#include "World/PhysicsWorld.hpp"
 #include "Renderer/MasterRenderer.hpp"
 #include "Util/MatrixStack.hpp"
 
@@ -46,6 +47,9 @@ private:
     void UpdateFramebuffer();
 
     std::vector<SDL_Event> events = {};
+
+    // Physics World
+    std::unique_ptr<PhysicsWorld> physics_world = nullptr;
 
     // Renderer (Only this one)
     std::unique_ptr<MasterRenderer> master_renderer = nullptr;

@@ -59,12 +59,13 @@ void MasterRenderer::Render(const std::unique_ptr<Camera>& camera) {
     // TODO: 或許真的要考慮把形狀跟 renderer 做綁定，不然其實仔細看這個球體也是重覆綁定多次。
     // 繪製需要光照的物體 (lightning renderer)
     lightning_renderer->Prepare(camera);
-    lightning_renderer->Render(state.world->sun, state.world->my_sphere.get());
-    lightning_renderer->Render(state.world->moon, state.world->my_sphere.get());
-    lightning_renderer->Render(state.world->rick_rolls, state.world->my_cube.get());
-    lightning_renderer->Render(state.world->awesome_faces, state.world->billboard.get());
+    // lightning_renderer->Render(state.world->sun, state.world->my_sphere.get());
+    // lightning_renderer->Render(state.world->moon, state.world->my_sphere.get());
+    // lightning_renderer->Render(state.world->rick_rolls, state.world->my_cube.get());
+    // lightning_renderer->Render(state.world->awesome_faces, state.world->billboard.get());
     lightning_renderer->Render(state.world->ground, state.world->my_floor.get());
     lightning_renderer->Render(state.world->camera, state.world->my_cube.get());
+    lightning_renderer->Render(state.world->my_balls, state.world->my_sphere.get());
 
     // 繪製使用 Normal Mapping 的物體
     normal_map_renderer->Prepare(camera);

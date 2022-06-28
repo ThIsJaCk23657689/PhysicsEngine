@@ -16,7 +16,7 @@ struct Config {
     bool is_fullscreen = false;
     int width = 800;
     int height = 600;
-    std::string title = "SDL2 Examples - 06 Cube Map, Normal Map and Bloom";
+    std::string title = "Physics Engine";
     ScreenMode screen_mode = ScreenMode::Prspct;
 
     // OpenGL Settings

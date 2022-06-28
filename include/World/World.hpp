@@ -53,6 +53,7 @@ struct World {
     Entity camera;
     Entity brick;
     std::vector<Entity> awesome_faces;
+    std::vector<Entity> my_balls;
 
     // Player
     std::unique_ptr<Player> me = nullptr;

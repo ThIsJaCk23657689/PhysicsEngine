@@ -1,9 +1,7 @@
-# SDL2 範例程式
-### 06 Cube Map, Normal Map and Bloom
+# Physics Engine
 本範例程式使用 SDL2 並且使用 OpenGL 3.3 版本，實現近代 OpenGL 開發以及流程，其中包含 Shader 的撰寫以及分拆程式，盡可能的實現物件導向設計的概念。
 
-本程式實作 Cube Map, Normal Map 和 Bloom。
-![](https://i.imgur.com/ViKuBuT.jpg)
+本程式實作 Physics Engine、Collision Detection
 
 ## 安裝
 需要使用 vcpkg 安裝以下套件：

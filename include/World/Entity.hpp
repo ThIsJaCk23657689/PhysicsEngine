@@ -7,6 +7,9 @@
 #include "Texture/Texture2D.hpp"
 #include "Material/Material.hpp"
 
+#include "Physics/Collider.hpp"
+#include "Physics/Transform.hpp"
+
 struct Entity {
     Material material;
 
@@ -27,6 +30,9 @@ struct Entity {
     glm::vec3 force;
     float mass;
     bool movable;
+
+    Collider* collider;
+    Transform* transform;
 
     Entity(glm::vec3 pos = {0, 0, 0}, glm::vec3 rot = {0, 0, 0}, glm::vec3 sca = {1, 1, 1});
     Entity(glm::vec3 pos, glm::vec3 rot, glm::vec3 sca, Texture2D* tex);

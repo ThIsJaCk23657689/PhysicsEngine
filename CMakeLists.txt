@@ -57,6 +57,7 @@ file(GLOB MY_SOURCE CONFIGURE_DEPENDS
     "src/GL/*.cpp"
     "src/Light/*.cpp"
     "src/Material/*.cpp"
+    "src/Physics/*.cpp"
     "src/Renderer/*.cpp"
     "src/Shader/*.cpp"
     "src/Texture/*.cpp"
